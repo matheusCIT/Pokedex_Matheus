@@ -1,9 +1,9 @@
 //
-//  File.swift
-//  Pokedex_Matheus
+//  EnvironmentValues+ImageCache.swift
+//  AsyncImage
 //
-//  Created by Matheus Cavalcante Teixeira on 11/05/20.
-//  Copyright © 2020 Matheus Cavalcante Teixeira. All rights reserved.
+//  Created by Vadim Bulavin on 3/24/20.
+//  Copyright © 2020 Vadym Bulavin. All rights reserved.
 //
 
 import SwiftUI

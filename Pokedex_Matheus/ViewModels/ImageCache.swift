@@ -1,9 +1,9 @@
 //
 //  ImageCache.swift
-//  Pokedex_Matheus
+//  AsyncImage
 //
-//  Created by Matheus Cavalcante Teixeira on 11/05/20.
-//  Copyright © 2020 Matheus Cavalcante Teixeira. All rights reserved.
+//  Created by Vadym Bulavin on 2/19/20.
+//  Copyright © 2020 Vadym Bulavin. All rights reserved.
 //
 
 import UIKit

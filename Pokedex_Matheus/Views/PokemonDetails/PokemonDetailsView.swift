@@ -10,9 +10,6 @@ import SwiftUI
 import Combine
 
 struct PokemonDetailsView: View {
-    private struct Constants {
-        static let imageSize: CGFloat = 80
-    }
     @ObservedObject var viewModel: PokemonDetailsViewModel
     @Environment(\.imageCache) var cache: ImageCache
     @State var isLoading: Bool = true
@@ -20,10 +17,35 @@ struct PokemonDetailsView: View {
     var body: some View {
         ScrollView {
             VStack{
-                AsyncImage(url: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/5.png", cache: cache, placeholder: ActivityIndicator(isAnimating: $isLoading, style: .medium), configuration: { $0.resizable() })
-                .frame(width: Constants.imageSize, height: Constants.imageSize)
-//                AsyncImage(url: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png", cache: cache, placeholder: ActivityIndicator(isAnimating: $isLoading, style: .medium), configuration: { $0.resizable() })
-//                .frame(width: 80, height: 80)
+                
+                if !viewModel.sprites.isEmpty{
+                    GeometryReader { geometry in
+                        ImageCarouselView(numberOfImages: self.viewModel.sprites.count) {
+                            ForEach(self.viewModel.sprites, id: \.self){ sprite in
+                                AsyncImage(url: sprite, cache: self.cache, placeholder:ActivityIndicator(isAnimating: self.$isLoading, style: .medium) , configuration: { $0.resizable() })
+                                .scaledToFill()
+                                .frame(width: geometry.size.width, height: geometry.size.height)
+                                .clipped()
+                            }
+                            
+//                            Image("image_carousel_1")
+//                                .resizable()
+//                                .scaledToFill()
+//                                .frame(width: geometry.size.width, height: geometry.size.height)
+//                                .clipped()
+//                            Image("image_carousel_2")
+//                                .resizable()
+//                                .scaledToFill()
+//                                .frame(width: geometry.size.width, height: geometry.size.height)
+//                                .clipped()
+//                            Image("image_carousel_3")
+//                                .resizable()
+//                                .scaledToFill()
+//                                .frame(width: geometry.size.width, height: geometry.size.height)
+//                                .clipped()
+                        }
+                    }.frame(height: 300, alignment: .center)
+                }
                 
                 if !viewModel.id.value.isEmpty {
                     ContentView(model: viewModel.id)

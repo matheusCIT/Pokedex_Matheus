@@ -22,7 +22,9 @@ final class PokemonDetailsViewModel: ObservableObject {
     
     var cancellableSet: Set<AnyCancellable> = []
     
-    
+    var sprites: [String] {
+        return pokemon?.sprites ?? []
+    }
     var baseExperience: ContentModel {
         return ContentModel(label: Localizable.Details.Label.baseExpirence, value: String(format: Localizable.Details.Format.baseExpirence, (pokemon?.baseExperience ?? 0)))
     }

@@ -1,9 +1,9 @@
 //
 //  ImageLoader.swift
-//  Pokedex_Matheus
+//  AsyncImage
 //
-//  Created by Matheus Cavalcante Teixeira on 11/05/20.
-//  Copyright © 2020 Matheus Cavalcante Teixeira. All rights reserved.
+//  Created by Vadym Bulavin on 2/13/20.
+//  Copyright © 2020 Vadym Bulavin. All rights reserved.
 //
 
 import Combine
@@ -22,7 +22,6 @@ public final class ImageLoader: ObservableObject {
     private var cache: ImageCache?
     private var cancellable: AnyCancellable?
     private static let imageProcessingQueue = DispatchQueue(label: "image-processing")
-
     
     // MARK: Initializers
     
@@ -57,8 +56,7 @@ public final class ImageLoader: ObservableObject {
         }
         
         cancellable = URLSession.shared.dataTaskPublisher(for: url)
-            .map {
-                UIImage(data: $0.data) }
+            .map { UIImage(data: $0.data) }
             .replaceError(with: nil)
             .handleEvents(receiveSubscription: { [weak self] _ in self?.onStart() },
                           receiveOutput: { [weak self] in self?.cache($0) },
@@ -88,3 +86,4 @@ public final class ImageLoader: ObservableObject {
         image.map { cache?[url] = $0 }
     }
 }
+

@@ -1,9 +1,9 @@
 //
 //  AsyncImage.swift
-//  Pokedex_Matheus
+//  AsyncImage
 //
-//  Created by Matheus Cavalcante Teixeira on 11/05/20.
-//  Copyright © 2020 Matheus Cavalcante Teixeira. All rights reserved.
+//  Created by Vadym Bulavin on 2/13/20.
+//  Copyright © 2020 Vadym Bulavin. All rights reserved.
 //
 
 import SwiftUI
@@ -26,6 +26,14 @@ public struct AsyncImage<Placeholder: View>: View {
         }
     }
     
+    // MARK: Initializers
+    
+    /// Initializer
+    /// - Parameters:
+    ///   - url: The image url
+    ///   - cache: An ImageCache instance
+    ///   - placeholder: A placeholder to display while loading the image
+    ///   - configuration: Some configs you provide
     public init(url: String, cache: ImageCache? = nil, placeholder: Placeholder? = nil, configuration: @escaping (Image) -> Image = { $0 }) {
         loader = ImageLoader(url: url, cache: cache)
         self.placeholder = placeholder
