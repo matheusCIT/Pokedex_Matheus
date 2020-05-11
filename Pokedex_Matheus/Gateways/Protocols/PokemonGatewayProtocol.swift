@@ -10,6 +10,6 @@ import Foundation
 import Combine
 
 protocol PokemonGatewayProtocol {
-    func fetchPokemonList<T:Decodable>(endpoint: String) -> AnyPublisher<T, Error>
+    func fetchData<T:Decodable>(endpoint: String) -> AnyPublisher<T, Error>
     func toggleIsFavorite(for pokemon: PokemonListModel)
 }

@@ -13,9 +13,11 @@ struct PokemonListView: View {
     
     var body: some View {
         NavigationView {
-            List(viewModel.pokemons) { pokemon in
-                PokemonCell(pokemon: pokemon).onAppear {
-                    self.viewModel.fetchPokemons(current: pokemon)
+            List(self.viewModel.pokemons) { pokemon in
+                NavigationLink(destination: PokemonDetailsView(viewModel: PokemonDetailsViewModel(detailsUrl: pokemon.url))){
+                    PokemonCell(pokemon: pokemon).onAppear {
+                            self.viewModel.fetchPokemons(current: pokemon)
+                    }
                 }
             }
         .navigationBarTitle(Text("Pokemons"))

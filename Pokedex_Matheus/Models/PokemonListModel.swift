@@ -9,8 +9,9 @@
 import Foundation
 
 struct PokemonListModel: Identifiable, Codable {
-    var id: Int
-    var name: String
-    var image: String?
+    let id: Int
+    let name: String
+    let image: String?
+    let url: String
     var isFavorite = false
 }

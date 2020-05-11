@@ -19,7 +19,7 @@ class PokemonGateway {
 
 // MARK: - DataManagerProtocol
 extension PokemonGateway: PokemonGatewayProtocol {
-    func fetchPokemonList<T:Decodable>(endpoint: String) -> AnyPublisher<T, Error> {
+    func fetchData<T:Decodable>(endpoint: String) -> AnyPublisher<T, Error> {
         guard let url = URL(string: endpoint) else {
             return Fail(error: RequestError.invalidUrl).eraseToAnyPublisher()
         }
@@ -43,20 +43,15 @@ extension PokemonGateway: PokemonGatewayProtocol {
     }
 }
 
-struct Response<T> {
-    let value: T
-    let response: URLResponse
-}
-
 struct ListResponse: Codable {
     let count: Int?
     let previous: String?
-    let results: [Pokemon]?
+    let results: [PokemonList]?
 }
 
-struct Pokemon: Codable {
+struct PokemonList: Codable {
     let name: String
-    let url: String?
+    let url: String
 }
 
 public enum RequestError: Error {

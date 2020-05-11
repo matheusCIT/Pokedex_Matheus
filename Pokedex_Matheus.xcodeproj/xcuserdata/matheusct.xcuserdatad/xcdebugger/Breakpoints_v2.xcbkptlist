@@ -7,32 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6097D89D-62FC-455C-AB03-5EB2FE30243F"
-            shouldBeEnabled = "Yes"
+            uuid = "3EABE8D2-F0F9-4ED2-869C-D862C755BDBC"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pokedex_Matheus/ViewModels/PokemonListViewModel.swift"
+            filePath = "Pokedex_Matheus/Gateways/PokemonGateway.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "fetchPokemons(current:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "BE312DBB-2E3A-41EA-A6B9-ED527A1851CA"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pokedex_Matheus/ViewModels/PokemonListViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "fetchPokemons(current:)"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "fetchData(endpoint:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

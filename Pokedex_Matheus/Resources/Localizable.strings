@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+  Pokedex_Matheus
+
+  Created by Matheus Cavalcante Teixeira on 10/05/20.
+  Copyright © 2020 Matheus Cavalcante Teixeira. All rights reserved.
+*/
+
+
+"details.label.baseExperience" = "Experiencia Base:";
+"details.label.height" = "Altura:";
+"details.label.id" = "Id:";
+"details.label.name" = "Nome:";
+"details.label.weight" = "Peso:";
+"details.label.abilities" = "Habilidades";
+"details.label.moves" = "Ataques";
+"details.label.stat" = "Status";
+
+"details.label.abilities.isHidden" = "Hidden:";
+
+"details.label.stats.effort" = "Effort:";
+"details.label.stats.value" = "Value:";
+
+"details.format.baseExperience" = "%i XP";
+"details.format.height" = "%i m";
+"details.format.weight" = "%i Kg";

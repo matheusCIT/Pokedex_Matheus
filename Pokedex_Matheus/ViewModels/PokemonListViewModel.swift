@@ -14,11 +14,10 @@ final class PokemonListViewModel: ObservableObject {
     var count = 0
     let limit = 50
     
-    var dataManager: PokemonGatewayProtocol
+    var gateway: PokemonGatewayProtocol
     
     init(dataManager: PokemonGatewayProtocol = PokemonGateway.shared) {
-        self.dataManager = dataManager
-        
+        self.gateway = dataManager
         fetchPokemons()
     }
     var cancellableSet: Set<AnyCancellable> = []
@@ -32,15 +31,15 @@ extension PokemonListViewModel: PokemonListViewModelProtocol {
             return
         }
         
-        let response:AnyPublisher<ListResponse, Error> = dataManager.fetchPokemonList(endpoint: "https://pokeapi.co/api/v2/pokemon/?offset=\(count)&limit=\(count+limit)")
+        let response:AnyPublisher<ListResponse, Error> = gateway.fetchData(endpoint: "https://pokeapi.co/api/v2/pokemon/?offset=\(count)&limit=\(count+limit)")
             
         response.sink(receiveCompletion: { _ in },
                   receiveValue: { result in
-                    let results = result.results!
-                    var index = self.count
-                    for r in results {
-                        index += 1
-                        self.pokemons.append(PokemonListModel.init(id: index, name: r.name, image: nil, isFavorite: false))
+                    guard let results = result.results else {
+                        return
+                    }
+                    for pokemon in results {
+                        self.pokemons.append(PokemonListModel.init(id: self.getPokemonId(from: pokemon.url), name: pokemon.name, image: nil, url: pokemon.url, isFavorite: true))
                     }
                     self.count = self.pokemons.count
             }).store(in: &cancellableSet)
@@ -48,7 +47,7 @@ extension PokemonListViewModel: PokemonListViewModelProtocol {
     }
     
     func toggleIsFavorite(for pokemon: PokemonListModel) {
-        dataManager.toggleIsFavorite(for: pokemon)
+        gateway.toggleIsFavorite(for: pokemon)
     }
     
     private func shouldLoadMore(current: PokemonListModel?) -> Bool{
@@ -65,4 +64,25 @@ extension PokemonListViewModel: PokemonListViewModelProtocol {
         
         return false
     }
+    
+    private func getPokemonId(from url: String) -> Int{
+        do{
+            let regex = try NSRegularExpression(pattern: #"((?<=\/)[0-9]\d*(?=\/))"#)
+            let results = regex.firstMatch(in: url,options: [], range: NSRange(url.startIndex..., in: url))
+            let index = results.map{ (result) -> String in
+                if let range = Range(result.range, in: url) {
+                    return String(url[range])
+                } else {
+                    return "0"
+                }
+            }
+            guard let validIndex = index else {
+                return 0
+            }
+            return Int(validIndex) ?? 0
+        } catch {
+            return 0
+        }
+    }
 }
+

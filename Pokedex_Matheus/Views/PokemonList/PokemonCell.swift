@@ -22,6 +22,6 @@ struct PokemonCell: View {
 
 struct PokemonCell_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonCell(pokemon: PokemonListModel(id:1 ,name: "Bulbasaur"))
+        PokemonCell(pokemon: PokemonListModel(id:1 ,name: "Bulbasaur", image: "",url: ""))
     }
 }
