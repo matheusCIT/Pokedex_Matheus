@@ -43,5 +43,13 @@ struct Localizable {
         }
     }
     
+    struct Api {
+        struct Error {
+            static let url = "api.error.url"
+            static let decoding = "api.error.decoding"
+            static let responseCode = "api.error.response.code"
+            static let unexpected = "api.error.unexpected"
+        }
+    }
     
 }

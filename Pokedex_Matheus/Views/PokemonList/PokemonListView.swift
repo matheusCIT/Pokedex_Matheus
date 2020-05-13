@@ -14,7 +14,7 @@ struct PokemonListView: View {
     var body: some View {
         NavigationView {
             List(self.viewModel.pokemons) { pokemon in
-                NavigationLink(destination: PokemonDetailsView(viewModel: PokemonDetailsViewModel(detailsUrl: pokemon.url))){
+                NavigationLink(destination: PokemonDetailsView(viewModel: PokemonDetailsViewModel(recivedId: pokemon.id))){
                     PokemonCell(pokemon: pokemon).onAppear {
                             self.viewModel.fetchPokemons(current: pokemon)
                     }

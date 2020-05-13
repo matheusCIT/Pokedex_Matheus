@@ -16,12 +16,13 @@ struct PokemonCell: View {
             Text(String(pokemon.id))
             Text(pokemon.name)
             Spacer()
+            ImageView(sprite: pokemon.image).frame(width: 75, height: 75, alignment: .trailing)
         }
     }
 }
 
 struct PokemonCell_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonCell(pokemon: PokemonListModel(id:1 ,name: "Bulbasaur", image: "",url: ""))
+        PokemonCell(pokemon: PokemonListModel(id:1 ,name: "Bulbasaur", image: ""))
     }
 }

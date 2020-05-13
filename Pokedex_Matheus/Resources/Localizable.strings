@@ -24,3 +24,8 @@
 "details.format.baseExperience" = "%i XP";
 "details.format.height" = "%i m";
 "details.format.weight" = "%i Kg";
+
+"api.error.url" = "Invalid URL";
+"api.error.decoding" = "Error decoding data";
+"api.error.response.code" = "HTTP status code: %i";
+"api.error.unexpected" = "Unexpected Error: ";

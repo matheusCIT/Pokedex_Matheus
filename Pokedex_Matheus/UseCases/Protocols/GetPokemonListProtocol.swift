@@ -1,5 +1,5 @@
 //
-//  PokemonListViewModelProtocol.swift
+//  File.swift
 //  Pokedex_Matheus
 //
 //  Created by Matheus Cavalcante Teixeira on 03/05/20.
@@ -9,9 +9,6 @@
 import Foundation
 import Combine
 
-protocol PokemonListViewModelProtocol {
-    
-    var pokemons: [PokemonListModel] { get }
-    
-    func fetchPokemons(current: PokemonListModel?)
+protocol GetPokemonListProtocol {
+    func execute(_ offset: Int, _ limit: Int) -> AnyPublisher<[PokemonListModel], Error>
 }
