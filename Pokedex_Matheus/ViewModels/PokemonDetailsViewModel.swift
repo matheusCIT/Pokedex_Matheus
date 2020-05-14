@@ -68,7 +68,6 @@ extension PokemonDetailsViewModel: PokemonDetailsViewModelProtocol {
         let response:AnyPublisher<PokemonModel, Error> = useCase.execute(recivedId)
         
         response.sink(receiveCompletion: { _ in
-            
         }, receiveValue: { result in
             self.pokemon = result
         }).store(in: &cancellableSet)
@@ -80,14 +79,4 @@ extension PokemonDetailsViewModel: PokemonDetailsViewModelProtocol {
         }
         favoriteUseCase.execute(pokemon: pokemon)
     }
-        
-//        let response:AnyPublisher<PokemonDetailsResponse, Error> = useCase.execute(endpoint: detailsUrl, httpMethod: "GET")
-//            
-//        response.sink(receiveCompletion: { _ in },
-//                  receiveValue: { PokemonDetailsResponse in
-//                    self.pokemon = PokemonModel(response: PokemonDetailsResponse)
-//            }).store(in: &cancellableSet)
-    
-    
-    
 }
