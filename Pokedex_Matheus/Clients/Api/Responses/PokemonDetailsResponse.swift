@@ -1,7 +1,3 @@
-
-// Generated with quicktype
-// For more options, try https://app.quicktype.io
-
 import Foundation
 
 struct PokemonDetailsResponse: Codable {

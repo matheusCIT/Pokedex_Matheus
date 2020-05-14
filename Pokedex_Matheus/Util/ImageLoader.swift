@@ -1,21 +1,8 @@
-//
-//  ImageLoader.swift
-//  AsyncImage
-//
-//  Created by Vadym Bulavin on 2/13/20.
-//  Copyright © 2020 Vadym Bulavin. All rights reserved.
-//
-
 import Combine
 import UIKit
 
 public final class ImageLoader: ObservableObject {
-    
-    // MARK: Published
-    
     @Published var image: UIImage?
-    
-    // MARK: Properties
     
     private(set) var isLoading = false
     private let url: String
@@ -23,26 +10,15 @@ public final class ImageLoader: ObservableObject {
     private var cancellable: AnyCancellable?
     private static let imageProcessingQueue = DispatchQueue(label: "image-processing")
     
-    // MARK: Initializers
-    
-    /// Initializer
-    /// - Parameters:
-    ///   - url: The image url
-    ///   - cache: A ImageCache instance
     public init(url: String, cache: ImageCache? = nil) {
         self.url = url
         self.cache = cache
     }
     
-    // MARK: Deinitializer
-    
     deinit {
         cancellable?.cancel()
     }
     
-    // MARK: Public methods
-    
-    /// Loads the image from url
     public final func load() {
         guard !isLoading else { return }
 
@@ -67,12 +43,9 @@ public final class ImageLoader: ObservableObject {
             .assign(to: \.image, on: self)
     }
     
-    /// Cancels image loading
     public final func cancel() {
         cancellable?.cancel()
     }
-    
-    // MARK: Private methods
     
     private func onStart() {
         isLoading = true

@@ -2,7 +2,7 @@
 //  PokemonListViewModel.swift
 //  Pokedex_Matheus
 //
-//  Created by Matheus Cavalcante Teixeira on 03/05/20.
+//  Created by Matheus Cavalcante Teixeira on 10/05/20.
 //  Copyright © 2020 Matheus Cavalcante Teixeira. All rights reserved.
 //
 
@@ -23,7 +23,6 @@ final class PokemonListViewModel: ObservableObject {
     var cancellableSet: Set<AnyCancellable> = []
 }
 
-//MARK: - PokemonListViewModelProtocol
 extension PokemonListViewModel: PokemonListViewModelProtocol {
     func fetchPokemons(current: PokemonListModel? = nil) {
         
